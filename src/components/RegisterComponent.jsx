@@ -1,16 +1,16 @@
 import React from "react";
-import { LoginAPI, GoogleLoginAPI } from "../api/authAPI";
+import { SignupAPI } from "../api/authAPI";
 import { useNavigate } from "react-router-dom";
 
-export default function LoginComponent() {
+export default function RegisterComponent() {
   const [credentials, setCredentials] = React.useState({});
   const navigate = useNavigate();
 
-  const login = async (e) => {
+  const signup = async (e) => {
     e.preventDefault();
     const { email, password } = credentials;
     try {
-      const res = await LoginAPI(email, password);
+      const res = await SignupAPI(email, password);
       console.log(res);
       navigate("/home");
     } catch (err) {
@@ -18,14 +18,9 @@ export default function LoginComponent() {
     }
   };
 
-  const googleLogin = async () => {
-    const res = await GoogleLoginAPI();
-    console.log(res);
-  };
-
   return (
     <div>
-      <h1>LoginComponent</h1>
+      <h1>Register component</h1>
       <input
         placeholder="Email"
         type="email"
@@ -46,9 +41,8 @@ export default function LoginComponent() {
           })
         }
       />
-      <button onClick={login}>Login to App</button>
-      <button onClick={googleLogin}>Login with Google</button>
-      <button onClick={() => navigate("/register")}>Sign up</button>
+      <button onClick={signup}>Singup to App</button>
+      <button onClick={() => navigate("/login")}>LogIn</button>
     </div>
   );
 }
