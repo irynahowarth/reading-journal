@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./Routes/index.jsx";
+import { app, auth } from "./firebaseConfig.js";
 
 import "./index.css";
 
