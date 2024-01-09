@@ -72,7 +72,9 @@ export default function HomeComponent() {
       )}
       {currentUser !== null && showForm && form}
       {currentUser !== null && <button onClick={signout}>Sing out</button>}
-      {currentUser !== null && <DialogComponent addBook={bookStatus} />}
+      {currentUser !== null && (
+        <DialogComponent addBook={bookStatus} uid={auth.currentUser.uid} />
+      )}
     </div>
   );
 }

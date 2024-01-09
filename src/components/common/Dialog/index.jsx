@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import "./index.scss";
 
-export default function DialogComponent({ addBook }) {
+export default function DialogComponent({ addBook, uid }) {
   const [open, setOpen] = React.useState(false);
   const [formData, setFormData] = React.useState({});
   const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
@@ -37,7 +37,7 @@ export default function DialogComponent({ addBook }) {
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              addBook(formData);
+              addBook({ ...formData, uid: uid });
               setFormData({});
               wait().then(() => setOpen(false));
             }}
