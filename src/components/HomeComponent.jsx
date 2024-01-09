@@ -2,6 +2,8 @@ import React from "react";
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import DialogComponent from "./common/Dialog";
+import { bookStatus } from "../api/FirestoreAPI";
 
 export default function HomeComponent() {
   const navigate = useNavigate();
@@ -70,6 +72,7 @@ export default function HomeComponent() {
       )}
       {currentUser !== null && showForm && form}
       {currentUser !== null && <button onClick={signout}>Sing out</button>}
+      {currentUser !== null && <DialogComponent addBook={bookStatus} />}
     </div>
   );
 }
